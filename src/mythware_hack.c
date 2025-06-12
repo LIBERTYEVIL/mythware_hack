@@ -6,12 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
-#include "mythware_hack.h"
-
-/* 包含API头文件、编译时链接ws2_32库 */
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <windows.h>
+#include "mythware_hack.h"
 
 /* MSVC使用以下语句，gcc编译需加参数-lws2_32 */
 #ifdef _MSC_VER
@@ -25,7 +23,7 @@ char ch_to_lower (char ch) { return (ch >= 'A' && ch <= 'Z') ? (ch + ('a' - 'A')
 void str_to_lowercase (char *str) { for (; *str; str++) *str = ch_to_lower(*str); }
 
 /* UTF-8转UTF-16LE, 返回值: 新分配的UTF-16LE字符串（wchar_t*），需要调用free释放 */
-wchar_t* utf8_to_utf16le(const char* utf8_str) 
+wchar_t* utf8_to_utf16le (const char* utf8_str) 
 {
     if (!utf8_str) return NULL;
     int len = MultiByteToWideChar(CP_UTF8, 0, utf8_str, -1, NULL, 0);
@@ -41,7 +39,7 @@ wchar_t* utf8_to_utf16le(const char* utf8_str)
 }
 
 /* ANSI转UTF-16LE, 返回值: 新分配的UTF-16LE字符串（wchar_t*），需要调用free释放 */
-wchar_t* ansi_to_utf16le(const char* ansi_str) 
+wchar_t* ansi_to_utf16le (const char* ansi_str) 
 {
     if (!ansi_str) return NULL;
     int len = MultiByteToWideChar(CP_ACP, 0, ansi_str, -1, NULL, 0);
@@ -57,7 +55,7 @@ wchar_t* ansi_to_utf16le(const char* ansi_str)
 }
 
 /* 返回一个UTF-16LE宽字符串的全部字节数，包括结尾两个字节的0x00 */
-size_t utf16le_arr_size(wchar_t* ws) { return (size_t)((wcslen(ws) + 1) * sizeof(wchar_t)); }
+size_t utf16le_arr_size (wchar_t* ws) { return (size_t)((wcslen(ws) + 1) * sizeof(wchar_t)); }
 
 /* 利用 Windows API 封装的花里胡哨彩色printf */
 int wprintfc (WORD color, const char* MSG, ...)

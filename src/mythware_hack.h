@@ -3,15 +3,29 @@
 #ifndef MYTHWARE_HACK_H
 #define MYTHWARE_HACK_H
 
-#include <wchar.h>
-
 /* Windows Colors Constant */
 #define red     FOREGROUND_RED
 #define green   FOREGROUND_GREEN
 #define blue    FOREGROUND_BLUE
 #define light   FOREGROUND_INTENSITY
+#include <wchar.h>
+#include <windows.h>
 
 typedef struct sockaddr_in addrInfo;
+
+/* Functions */
+char ch_to_lower (char ch);
+void str_to_lowercase (char *str);
+wchar_t* utf8_to_utf16le (const char* utf8_str);
+wchar_t* ansi_to_utf16le (const char* ansi_str);
+size_t utf16le_arr_size (wchar_t* ws);
+int wprintfc (WORD color, const char* MSG, ...);
+void finfo_logo ();
+void finfo_help ();
+void finfo_vers ();
+int isStrPara (const char* str);
+int arg_analyze_0 (int argc, char* argv[], unsigned char* cmdPIndexList);
+int arg_analyze_1 (int ana0, char* argv[], unsigned char* cmdPIndexList, addrInfo* Paddr);
 
 /* Result of Protocol Analysis */
 static char h_sign[] = {
@@ -409,8 +423,5 @@ static const char* info_logo[]  = {
 "\t/_/  /_/\\_, /\\__/_//_/__,__/\\_,_/_/  \\__/__/_//_/\\_,_/\\__/_/\\_\\ ",
 "\t       /___/                           /___/                    "
 };
-
-/* Defination */
-
 
 #endif
