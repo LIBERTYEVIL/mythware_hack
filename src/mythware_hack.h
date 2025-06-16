@@ -24,8 +24,8 @@ void finfo_logo ();
 void finfo_help ();
 void finfo_vers ();
 int isStrPara (const char* str);
-int arg_analyze_0 (int argc, char* argv[], unsigned char* cmdPIndexList);
-int arg_analyze_1 (int ana0, char* argv[], unsigned char* cmdPIndexList, addrInfo* Paddr);
+int arg_analyze_0 (int argc, char* argv[], char* cmdPIndexList);
+int arg_analyze_1 (int ana0, char* argv[], char* cmdPIndexList, addrInfo* Paddr);
 
 /* Result of Protocol Analysis */
 static char h_sign[] = {

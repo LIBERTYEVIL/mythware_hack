@@ -160,7 +160,7 @@ int isStrPara (const char* str)
     BIT     x       x       x       x       y       y       y       y
     MEANS   IP      PORT    M       S       R       C       Q       Help
 */
-int arg_analyze_0 (int argc, char* argv[], unsigned char* cmdPIndexList)
+int arg_analyze_0 (int argc, char* argv[], char* cmdPIndexList)
 {
     int ret_flags = 0;
     for (int i=1; i<argc; i++)
@@ -190,7 +190,7 @@ int arg_analyze_0 (int argc, char* argv[], unsigned char* cmdPIndexList)
     3   -> 发送签到命令
     nF  -> 其他
 */
-int arg_analyze_1 (int ana0, char* argv[], unsigned char* cmdPIndexList, addrInfo* Paddr)
+int arg_analyze_1 (int ana0, char* argv[], char* cmdPIndexList, addrInfo* Paddr)
 {
     /* 0. 返回值 */
     int ret_value = 0;
@@ -359,7 +359,7 @@ int main (int argc, char* argv[])
     addrInfo* paddr     = &toAddr;
     toAddr.sin_family   = AF_INET;
     toAddr.sin_port     = htons(4705);
-    unsigned char cmdPIndexList[16];
+    char cmdPIndexList[16];
     
     /* 3. 参数解析 */
     for (int i = 1; i < argc; i++) if (*(argv+i)[0]=='-') str_to_lowercase(argv[i]);
