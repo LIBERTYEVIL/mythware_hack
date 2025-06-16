@@ -168,14 +168,14 @@ int arg_analyze_0 (int argc, char* argv[], char* cmdPIndexList)
         if (strcmp(argv[i], "-i") == 0) ret_flags |= 0x0080, (*(cmdPIndexList +7) = ((argc>i+1)?(i + 1):-1));    // -i   0000 1000 0000
         if (strcmp(argv[i], "-p") == 0) ret_flags |= 0x0040, (*(cmdPIndexList +6) = ((argc>i+1)?(i + 1):-1));    // -p   0000 0100 0000
         if (strcmp(argv[i], "-m") == 0) ret_flags |= 0x0020, (*(cmdPIndexList +5) = ((argc>i+1)?(i + 1):-1));    // -m   0000 0010 0000
-        if (strcmp(argv[i], "-s") == 0) ret_flags |= 0x0010, (*(cmdPIndexList +4) = ((argc>i+1)?(i + 1):-1));    // -s   0000 0001 0000
-        if (strcmp(argv[i], "-r") == 0) ret_flags |= 0x0008, (*(cmdPIndexList +3) = ((argc>i+1)?(i + 1):-1));    // -r   0000 0000 1000
+        if (strcmp(argv[i], "-s") == 0) ret_flags |= 0x0010, (*(cmdPIndexList +4) = ((argc>i+1)?(i + 1): 0));    // -s   0000 0001 0000
+        if (strcmp(argv[i], "-r") == 0) ret_flags |= 0x0008, (*(cmdPIndexList +3) = ((argc>i+1)?(i + 1): 0));    // -r   0000 0000 1000
         if (strcmp(argv[i], "-c") == 0) ret_flags |= 0x0004, (*(cmdPIndexList +2) = ((argc>i+1)?(i + 1):-1));    // -c   0000 0000 0100
-        if (strcmp(argv[i], "-q") == 0) ret_flags |= 0x0002, (*(cmdPIndexList +1) = ((argc>i+1)?(i + 1):-1));    // -q   0000 0000 0010
-        if (strcmp(argv[i], "-h") == 0) ret_flags |= 0x0001, (*(cmdPIndexList +0) = ((argc>i+1)?(i + 1):-1));    // -h   0000 0000 0001
+        if (strcmp(argv[i], "-q") == 0) ret_flags |= 0x0002, (*(cmdPIndexList +1) = ((argc>i+1)?(i + 1): 0));    // -q   0000 0000 0010
+        if (strcmp(argv[i], "-h") == 0) ret_flags |= 0x0001, (*(cmdPIndexList +0) = ((argc>i+1)?(i + 1): 0));    // -h   0000 0000 0001
 
-        if (strcmp(argv[i], "-v") == 0) ret_flags |= 0x0100, (*(cmdPIndexList +8) = ((argc>i+1)?(i + 1):-1));    // -v   0001 0000 0000
-        if (strcmp(argv[i], "-k") == 0) ret_flags |= 0x0200, (*(cmdPIndexList +9) = ((argc>i+1)?(i + 1):-1));    // -k   0010 0000 0000
+        if (strcmp(argv[i], "-v") == 0) ret_flags |= 0x0100, (*(cmdPIndexList +8) = ((argc>i+1)?(i + 1): 0));    // -v   0001 0000 0000
+        if (strcmp(argv[i], "-k") == 0) ret_flags |= 0x0200, (*(cmdPIndexList +9) = ((argc>i+1)?(i + 1): 0));    // -k   0010 0000 0000
         if (strcmp(argv[i], "-b") == 0) ret_flags |= 0x0400, (*(cmdPIndexList+10) = ((argc>i+1)?(i + 1):-1));    // -b   0100 0000 0000
     }
     return ret_flags;
